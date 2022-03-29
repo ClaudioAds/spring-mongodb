@@ -1,6 +1,7 @@
 package com.course.springmongodb.services;
 
 import com.course.springmongodb.domain.User;
+import com.course.springmongodb.dto.UserDTO;
 import com.course.springmongodb.repository.UserRepository;
 import com.course.springmongodb.services.exception.ObjectNotFoundException;
 import org.omg.PortableServer.POAPackage.ObjectAlreadyActive;
@@ -23,5 +24,13 @@ public class UserService {
     public User findById(String id) {
         Optional<User> obj = userRepository.findById(id);
         return obj.orElseThrow(() -> new ObjectNotFoundException("Objeto não encontrado"));
+    }
+
+    public User insert(User obj) {
+        return userRepository.insert(obj);
+    }
+
+    public User fromDTO(UserDTO objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail());
     }
 }
