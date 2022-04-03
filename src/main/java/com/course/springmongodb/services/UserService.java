@@ -4,7 +4,6 @@ import com.course.springmongodb.domain.User;
 import com.course.springmongodb.dto.UserDTO;
 import com.course.springmongodb.repository.UserRepository;
 import com.course.springmongodb.services.exception.ObjectNotFoundException;
-import org.omg.PortableServer.POAPackage.ObjectAlreadyActive;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
