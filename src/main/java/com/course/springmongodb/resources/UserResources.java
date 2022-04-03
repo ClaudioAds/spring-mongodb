@@ -1,5 +1,6 @@
 package com.course.springmongodb.resources;
 
+import com.course.springmongodb.domain.Post;
 import com.course.springmongodb.domain.User;
 import com.course.springmongodb.dto.UserDTO;
 import com.course.springmongodb.services.UserService;
@@ -57,5 +58,11 @@ public class UserResources {
         obj.setId(id); //pegando o id que vem na requisição e atribuindo a variavel local antes de inserir/atualizar
         obj = userService.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = userService.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 }
